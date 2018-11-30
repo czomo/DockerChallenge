@@ -2,8 +2,8 @@ FROM java:8
 
 WORKDIR /
 
-ADD HelloWorld.jar HelloWorld.jar
+ADD JavaDemo.jar JavaDemo.jar
 
-EXPOSE 8080
+EXPOSE 3306
 
-CMD java - jar HelloWorld.jar
+CMD java - jar JavaDemo.jar
