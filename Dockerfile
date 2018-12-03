@@ -1,9 +1,9 @@
 FROM java:8
 
+COPY ./mysql-connector-java-8.0.13.jar  /mysql-connector-java-8.0.13.jar
+
+COPY ./JavaDemo.java /JavaDemo.java
+
 WORKDIR /
 
-ADD JavaDemo.jar JavaDemo.jar
-
-EXPOSE 3306
-
-CMD java - jar JavaDemo.jar
+RUN ["javac", "JavaDemo.java"]
