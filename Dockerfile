@@ -6,4 +6,6 @@ COPY ./JavaDemo.java /JavaDemo.java
 
 WORKDIR /
 
-RUN ["javac", "JavaDemo.java"]
+RUN javac JavaDemo.java
+
+CMD java JavaDemo
