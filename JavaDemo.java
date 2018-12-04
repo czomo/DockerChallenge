@@ -6,16 +6,17 @@ public class JavaDemo{
 public static void main(String[] args)
     {
         Connection conn = null;
+        Statement statement;
          try {
              conn =DriverManager.getConnection("jdbc:mysql://localhost:3306/JavaDemo?" +
                                         "user=tomasz&password=dul");
+        String st = "CREATE TABLE IF NOT EXISTS table (tytul VARCHAR(30), tresc VARCHAR(100), autor VARCHAR(30));";
+        statement = conn.createStatement();
+        statement.executeUpdate(st);
          } catch (SQLException ex) {
             System.out.println("Error connection");
         }
-         Statement statement;
-         String st = "CREATE TABLE IF NOT EXISTS table (tytul VARCHAR(30), tresc VARCHAR(100), autor VARCHAR(30));";
-        statement = conn.createStatement();
-        statement.executeUpdate(st);
+
         System.out.println("Wpisz dod aby dodać do bazy lub dis aby wyświetlić");
         Scanner in = new Scanner(System.in);
         String com = in.nextLine();
