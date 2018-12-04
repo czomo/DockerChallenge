@@ -6,4 +6,7 @@ COPY ./JavaDemo.java /JavaDemo.java
 
 WORKDIR /
 
-RUN ["javac", "JavaDemo.java"]
+RUN javac JavaDemo.java
+
+CMD ["java", "-classpath", "mysql-connector-java-8.0.13.jar:.","JavaDemo"]
+
