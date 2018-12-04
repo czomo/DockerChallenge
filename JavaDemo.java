@@ -23,8 +23,20 @@ public static void main(String[] args)
                 getRecords();
                 break;
             case "dod":
-                InsertSql(com2);
-                break;
+               try{
+                    PreparedStatement preparedStatement = conn.prepareStatement();
+                    System.out.print("Tytul: ");
+                    String tytul = in.nextLine();
+                    System.out.print("Tresc: ");
+                    String tresc = in.nextLine();
+                    System.out.print("Autor: ");
+                    String autor = in.nextLine();
+                    String query2 = "INSERT INTO table VALUES('"+tytul+"', '"+tresc+"', '"+autor+"');";
+                    preparedStatement.executeUpdate(query2);
+               }catch (SQLException ex){
+                    System.out.println("Error insert");
+               }
+               break;
     }
 }
     public static void getRecords() throws SQLException {
@@ -38,16 +50,5 @@ public static void main(String[] args)
                 "Autor:" + result.getString("autor")
             );
         }
-    }
-    public static void insertSql(String[] parts) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareStatement();
-        System.out.print("Tytul: ");
-        String tytul = in.nextLine();
-        System.out.print("Tresc: ");
-        String tresc = in.nextLine();
-        System.out.print("Autor: ");
-        String autor = in.nextLine();
-        String query2 = "INSERT INTO table VALUES('"+tytul+"', '"+tresc+"', '"+autor+"');";
-        preparedStatement.executeUpdate(query2);
     }
 }
