@@ -12,7 +12,7 @@ public static void main(String[] args)
         String com = in.nextLine();
             switch(com){
             case "dis":
-                getAllRecords();
+                getRecords();
                 break;
             case "dod":
                 InsertSql(com2);
@@ -22,28 +22,29 @@ public static void main(String[] args)
  
  
  
-    public static Connection getMySqlConnection() throw SQLException{
+    public static Connection getMySqlConnection() throws SQLException{
             Connection conn = null;
             try {
             conn =DriverManager.getConnection("jdbc:mysql://localhost:3306/JavaDemo?" +
                                             "user=tomasz&password=dul");
             } catch (SQLException ex) {
+                System.out.println("Error connection");
             }
     }
-    public static void getAllRecords() throws SQLException {
+    public static void getRecords() throws SQLException {
         Connection conn = getMySqlConnection();
         String query1 = "SELECT * FROM table;";
         PreparedStatement preparedStatement = conn.prepareStatement(query);
-        ResultSet rs = preparedStatement.executeQuery();
-        while (rs.next()) {
+        ResultSet result = preparedStatement.executeQuery();
+        while (result.next()) {
             System.out.println(
-                "Tytul:" + rs.getString("tytul") + 
-                "Tresc:" + rs.getString("tresc") + 
-                "Autor:" + rs.getString("autor")
+                "Tytul:" + result.getString("tytul") + 
+                "Tresc:" + result.getString("tresc") + 
+                "Autor:" + result.getString("autor")
             );
         }
     }
-    public static void executeInsertSql(String[] parts) throws SQLException {
+    public static void insertSql(String[] parts) throws SQLException {
         Connection conn = getMySqlConnection();
         PreparedStatement preparedStatement = conn.prepareStatement();
         System.out.print("Tytul: ");
