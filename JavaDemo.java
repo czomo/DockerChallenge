@@ -1,9 +1,8 @@
-import java.io.Scanner;
+import java.util.Scanner;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.*;
-import java.util.Calendar;
+
 public class JavaDemo{
  
 public static void main(String[] args)
