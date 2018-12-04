@@ -12,15 +12,19 @@ public static void main(String[] args)
          } catch (SQLException ex) {
             System.out.println("Error connection");
         }
+         Statement statement;
+         String st = "CREATE TABLE IF NOT EXISTS table (tytul VARCHAR(30), tresc VARCHAR(100), autor VARCHAR(30));";
+        statement = conn.createStatement();
+        statement.executeUpdate(st);
         System.out.println("Wpisz dod aby dodać do bazy lub dis aby wyświetlić");
         Scanner in = new Scanner(System.in);
         String com = in.nextLine();
             switch(com){
             case "dis":
                 try{
-                    PreparedStatement preparedStatement = conn.prepareStatement();
+                    statement = conn.createStatement();
                     String query1 = "SELECT * FROM table;";
-                    ResultSet result = preparedStatement.executeQuery(query1);
+                    ResultSet result = statement.executeQuery(query1);
                     while (result.next()) {
                         System.out.println(
                             "Tytul:" + result.getString("tytul") + 
@@ -33,7 +37,7 @@ public static void main(String[] args)
                }                break;
             case "dod":
                try{
-                    PreparedStatement preparedStatement = conn.prepareStatement();
+                    statement = conn.createStatement();
                     System.out.print("Tytul: ");
                     String tytul = in.nextLine();
                     System.out.print("Tresc: ");
@@ -41,7 +45,7 @@ public static void main(String[] args)
                     System.out.print("Autor: ");
                     String autor = in.nextLine();
                     String query2 = "INSERT INTO table VALUES('"+tytul+"', '"+tresc+"', '"+autor+"');";
-                    preparedStatement.executeUpdate(query2);
+                    statement.executeUpdate(query2);
                }catch (SQLException ex){
                     System.out.println("Error insert");
                }
