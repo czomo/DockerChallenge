@@ -8,7 +8,7 @@ public static void main(String[] args)
         Connection conn = null;
         Statement statement;
          try {
-             conn =DriverManager.getConnection("jdbc:mysql://localhost:3306/JavaDemo?" +
+             conn =DriverManager.getConnection("jdbc:mysql://10.0.10.3:3306/mydb?" +
                                         "user=tomasz&password=dul");
         String st = "CREATE TABLE IF NOT EXISTS table (tytul VARCHAR(30), tresc VARCHAR(100), autor VARCHAR(30));";
         statement = conn.createStatement();
