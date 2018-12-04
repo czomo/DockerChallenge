@@ -17,8 +17,20 @@ public static void main(String[] args)
         String com = in.nextLine();
             switch(com){
             case "dis":
-                getRecords();
-                break;
+                try{
+                    PreparedStatement preparedStatement = conn.prepareStatement();
+                    String query1 = "SELECT * FROM table;";
+                    ResultSet result = preparedStatement.executeQuery(query1);
+                    while (result.next()) {
+                        System.out.println(
+                            "Tytul:" + result.getString("tytul") + 
+                            "Tresc:" + result.getString("tresc") + 
+                            "Autor:" + result.getString("autor")
+                        );
+                    }
+               }catch (SQLException ex){
+                    System.out.println("Error insert");
+               }                break;
             case "dod":
                try{
                     PreparedStatement preparedStatement = conn.prepareStatement();
@@ -36,16 +48,4 @@ public static void main(String[] args)
                break;
     }
 }
-    public static void getRecords() throws SQLException {
-        String query1 = "SELECT * FROM table;";
-        PreparedStatement preparedStatement = conn.prepareStatement(query1);
-        ResultSet result = preparedStatement.executeQuery();
-        while (result.next()) {
-            System.out.println(
-                "Tytul:" + result.getString("tytul") + 
-                "Tresc:" + result.getString("tresc") + 
-                "Autor:" + result.getString("autor")
-            );
-        }
-    }
 }
