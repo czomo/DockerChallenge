@@ -14,7 +14,7 @@ public static void main(String[] args)
         String st = "CREATE TABLE IF NOT EXISTS table (tytul VARCHAR(30), tresc VARCHAR(100), autor VARCHAR(30));";
         statement = conn.createStatement();
         statement.executeUpdate(st);
-         } catch (SQLException ex) {
+         } catch (SQLException e) {
             System.out.println("Error connection");
         }
         Scanner in = new Scanner(System.in);
