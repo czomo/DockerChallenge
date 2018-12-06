@@ -20,9 +20,9 @@ public class JavaDemo {
                     ResultSet res = preparedStatement.executeQuery();
                     while(res.next()) {
                         System.out.println("" +
-                                "tytul " + res.getString("tytul") +
-                                "   tresc " + res.getString("tresc") +
-                                "   autor " + res.getString("autor"));
+                                "\ntytul " + res.getString("tytul") +
+                                "\n   tresc " + res.getString("tresc") +
+                                "\n   autor " + res.getString("autor"));
                     }
                 }
                 else if(args[0].equals("dod")) {
