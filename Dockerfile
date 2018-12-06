@@ -4,9 +4,10 @@ COPY ./mysql-connector-java-8.0.13.jar  /mysql-connector-java-8.0.13.jar
 
 COPY ./JavaDemo.java /JavaDemo.java
 
-WORKDIR /
+COPY ./ss.sh /ss.sh
 
-RUN javac JavaDemo.java
+ENV CLASSPATH=/mysql-connector-java-8.0.13.jar:${CLASSPATH}
 
-CMD ["java", "-classpath", "mysql-connector-java-8.0.13.jar:.","JavaDemo"]
+RUN chmod +x /ss.sh
 
+ENTRYPOINT ["./ss.sh"]
