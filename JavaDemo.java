@@ -47,6 +47,7 @@ public class JavaDemo {
         }
     }
 public static void ResultSat(Connection conn){
+   try{
                      Connection comm = conn;
                        PreparedStatement preparedStatement = comm.prepareStatement("SELECT * FROM myTable");
                     ResultSet res = preparedStatement.executeQuery();
@@ -57,4 +58,7 @@ public static void ResultSat(Connection conn){
                                 "\n   autor " + res.getString("autor"));
                     }
 }
+               } catch (SQLException e) {
+                e.printStackTrace();
+            }
 }
