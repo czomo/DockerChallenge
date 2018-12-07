@@ -5,7 +5,7 @@ public class JavaDemo {
         Connection conn = null;
         Statement stmt = null;
         try {
-            static conn = DriverManager.getConnection("jdbc:mysql://10.0.10.3:3306/mydb?autoReconnect=true&useSSL=false", "tdul", "dul");
+            conn = DriverManager.getConnection("jdbc:mysql://10.0.10.3:3306/mydb?autoReconnect=true&useSSL=false", "tdul", "dul");
 
             stmt = conn.createStatement();
             String sql = "CREATE TABLE IF NOT EXISTS myTable" +
@@ -16,7 +16,7 @@ public class JavaDemo {
         	System.out.println("podlaczono do bazy");
             if(args.length > 0) {
                 if(args[0].equals("dis")) {
-                  ResultSat();
+                  ResultSat(conn);
                 }
                 else if(args[0].equals("dod")) {
                     PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO myTable VALUES (?,?,?)");
@@ -46,8 +46,9 @@ public class JavaDemo {
             }
         }
     }
-public static void ResultSat(){
-                       PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM myTable");
+public static void ResultSat(Connection conn){
+                     Connection comm = conn;
+                       PreparedStatement preparedStatement = comm.prepareStatement("SELECT * FROM myTable");
                     ResultSet res = preparedStatement.executeQuery();
                     while(res.next()) {
                         System.out.println("" +
