@@ -5,7 +5,7 @@ public class JavaDemo {
         Connection conn = null;
         Statement stmt = null;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://10.0.10.3:3306/mydb?autoReconnect=true&useSSL=false", "tdul", "dul");
+            static conn = DriverManager.getConnection("jdbc:mysql://10.0.10.3:3306/mydb?autoReconnect=true&useSSL=false", "tdul", "dul");
 
             stmt = conn.createStatement();
             String sql = "CREATE TABLE IF NOT EXISTS myTable" +
