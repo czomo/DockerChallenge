@@ -57,8 +57,8 @@ public static void ResultSat(Connection conn){
                                 "\n   tresc " + res.getString("tresc") +
                                 "\n   autor " + res.getString("autor"));
                     }
-}
+
                } catch (SQLException e) {
-                e.printStackTrace();
-            }
+                e.printStackTrace();}
+}
 }
